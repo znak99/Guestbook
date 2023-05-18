@@ -22,8 +22,8 @@
     </form>
     {% for post in posts %}
     <div class="post">
-      <p class="content">{{ post.content }}</p>
-      <p class="date-time">{{ post.datetime }}</p>
+      <p class="content">{{ post[1] }}</p>
+      <p class="date-time">{{ post[2] }}</p>
     </div>
     {% endfor %}
   </body>
@@ -34,6 +34,8 @@
         if (event.keyCode === 13 && !event.shiftKey) {
           event.preventDefault();
           document.getElementById('submit-btn').click();
+
+          location.reload();
         }
       });
   </script>
