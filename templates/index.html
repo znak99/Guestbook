@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guest Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Guest Book</h1>
+      <h2 class="sub-title">Share your today!</h2>
+    </div>
+    <form action="/" method="POST" class="input-box">
+      <textarea
+        name="content"
+        class="input-field"
+        id="content"
+        required></textarea>
+      <button type="submit" id="submit-btn" class="submit-btn">Share</button>
+    </form>
+    {% for post in posts %}
+    <div class="post">
+      <p class="content">{{ post.content }}</p>
+      <p class="date-time">{{ post.datetime }}</p>
+    </div>
+    {% endfor %}
+  </body>
+  <script>
+    document
+      .getElementById('content')
+      .addEventListener('keydown', function (event) {
+        if (event.keyCode === 13 && !event.shiftKey) {
+          event.preventDefault();
+          document.getElementById('submit-btn').click();
+        }
+      });
+  </script>
+</html>
