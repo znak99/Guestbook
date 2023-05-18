@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse
 from datetime import datetime
 import mysql.connector
+import info
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -11,8 +12,8 @@ templates = Jinja2Templates(directory="templates")
 
 mydb = mysql.connector.connect(
     host="localhost",
-    user="22cm0138",
-    password="22cm0138",
+    user=info.user,
+    password=info.password,
     database="guestbook"
 )
 
